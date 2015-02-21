@@ -1,0 +1,141 @@
+  <!-- Main content -->
+                <section class="content" >
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                               {{pageTitle}}
+                            </h2>                            
+                        </div><!-- /.col -->
+                    </div>
+                <div >
+                    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Credit cards</button>
+                    <div collapse="isCollapsed" id="addCreditCard">
+                        <div class="well well-lg" style="margin-top:10px;">
+                         <div class="row">
+                              <form role="form" name="addCreditCardForm"  novalidate>
+                              <div class="col-md-4">
+                                 
+                                        <!-- text input -->
+                                        <div class="form-group" ng-class="{ 'has-error' : addCreditCardForm.cardaccountname.$invalid && !addCreditCardForm.cardaccountname.$pristine }">
+                                            <label>Card name</label>
+                                            <input type="text" required name="cardaccountname" ng-model="card.cardaccountname" class="form-control"  placeholder="Enter Account Name"/>
+                                        </div>
+                                         <div class="form-group" ng-class="{ 'has-error' : addCreditCardForm.cardaccountnumber.$invalid && !addCreditCardForm.cardaccountnumber.$pristine }">
+                                            <label>Card number</label>
+                                            <input type="number" required name="cardaccountnumber" ng-model="card.cardaccountnumber" class="form-control" placeholder="Enter Account Number"/>
+                                        </div>
+                                        
+                                        <!-- select -->
+                                        <div class="form-group" ng-class="{ 'has-error' : addCreditCardForm.cardaccounttype.$invalid && !addCreditCardForm.cardaccounttype.$pristine }">
+                                            <label>Card type</label>
+                                            <select class="form-control" required name="cardaccounttype" ng-model="card.cardaccounttype">
+                                                <option value=""> -- Select Type --</option>
+                                               <option value="visa">Visa</option>
+                                               <option value="mastercard">Mastercard</option>
+                                               <option value="american_express">American Express</option>
+                                               <option value="discover">Discover</option>
+                                               <option value="other">Other</option>
+                                             
+                                            </select>
+                                        </div>
+                                      
+                                   
+                                         
+                             </div>
+                              <div class="col-md-4">
+                                  <div class="form-group" ng-class="{ 'has-error' : addCreditCardForm.cardaccountbalance.$invalid && !addCreditCardForm.cardaccountbalance.$pristine }">
+                                            <label>Outstanding Balance</label>
+                                            <input type="number" required ng-model="card.cardaccountbalance" name="cardaccountbalance" class="form-control" placeholder="Outstanding Balance"/>
+                                        </div>
+                                         <div class="form-group" ng-class="{ 'has-error' : addCreditCardForm.cardaccountintrest.$invalid && !addCreditCardForm.cardaccountintrest.$pristine }">
+                                            <label>Interest</label>
+                                            <input type="number" required ng-model="card.cardaccountintrest" name="cardaccountintrest" class="form-control" placeholder="Interest"/>
+                                        </div>
+                                         <div class="form-group" ng-class="{ 'has-error' : addCreditCardForm.cardcreditlimit.$invalid && !addCreditCardForm.cardcreditlimit.$pristine }">
+                                            <label>Credit limit</label>
+                                            <input type="number" required ng-model="card.cardcreditlimit" name="cardcreditlimit" class="form-control" placeholder="Credit limit"/>
+                                        </div>
+                                   
+                                  
+                             </div>
+                              <div class="col-md-4">
+                                        <div class="form-group" ng-class="{ 'has-error' : addCreditCardForm.cardduedate.$invalid && !addCreditCardForm.cardduedate.$pristine }">
+                                            <label>Payment Due Day:</label>
+                                            <select class="form-control" required name="cardduedate" ng-model="card.cardduedate">
+                                                 <option value=""> -- Select due date --</option>
+                                                <option value="1"> 1</option>
+                                               <option value="2">2</option>
+                                               <option value="3">3</option>
+                                               <option value="4">4</option>
+                                               <option value="5">5</option>
+                                               <option value="6">6</option>
+                                             
+                                            </select>
+                                        </div>
+                                        
+                                        
+                                        <div class="box-footer">
+                                        <button type="submit" ng-disabled="addCreditCardForm.$invalid" id="saveCreditCard" ng-click="saveCreditCard(card);"class="btn btn-primary">Save Credit Card</button>
+                                        </div>
+                             <input type="text" ng-show="hidden" ng-model="card.userId" ng-init="{{card.userId=uid}}" name="userId" />
+
+                                   
+                             </div>
+                              </form>
+                         </div>
+                         
+                        </div> 
+                    </div>
+                </div>
+                    
+                    
+             
+
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                       
+                                        <th>Account name</th>
+                                        <th>Account type</th>
+                                        <th>Account number</th>
+                                        <th>Interest</th>
+                                        <th>Credit limit</th>
+                                        <th>Balance</th>
+                                        <th>Action</th>
+                                    </tr>                                    
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="data in cardInfo  | orderBy:sort:reverse">
+                                      
+                                        <td>{{data.account_name}}</td>
+                                        <td>{{data.account_type}}</td>
+                                        <td>{{data.account_number}}</td>
+                                         <td>{{data.interest}}</td>
+                                         <td>{{data.credit_limit}}</td>
+                                        <td>{{data.outstanding_balance}}</td>
+                                        <td align="center"> 
+                                            <!-- tools box -->
+                                            <div class="box-tools">
+                                                    <button class="btn btn-danger btn-sm removeAccount" ng-click="removeCard(data.id);" data-widget='remove' data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                                                </div>
+                                            <!-- /. tools -->
+                                        </td>
+                                    </tr>
+                                   <!-- <tr>
+                                       <td colspan="6" align="right"><strong>Total:</strong></td>
+                                        <td>23,8555</td>
+                                       
+                                    </tr>-->
+                              
+                                </tbody>
+                            </table>                            
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+
+
+
+                </section><!-- /.content -->

@@ -1,0 +1,39 @@
+      <div class="form-box" id="login-box" >
+            <div class="header">Register New Membership</div>
+            <form name="registerForm" novalidate>
+                <div class="body bg-gray">
+                    <div class="form-group" ng-class="{ 'has-error' : registerForm.fullname.$invalid && !registerForm.fullname.$pristine }">
+                        <input type="text"  name="fullname" required class="form-control" ng-model="user.fullname"   placeholder="Full name"/>
+                         <p ng-show="registerForm.fullname.$invalid && !registerForm.fullname.$pristine" class="help-block">Full name is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : registerForm.userid.$invalid && !registerForm.userid.$pristine }">
+                        <input type="email" name="userid" required class="form-control" ng-model="user.userId"  placeholder="Email"/>
+                         <p ng-show="registerForm.userid.$invalid && !registerForm.userid.$pristine" class="help-block">Email is required.</p>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : registerForm.password.$invalid && !registerForm.password.$pristine }" >
+                        <input type="password" name="password" id="password" required class="form-control"   ng-model="user.password"  placeholder="Password"/>
+                        
+                        <ul id="strength" check-strength="user.password"></ul>
+                    </div>
+                    <div class="form-group" ng-class="{ 'has-error' : registerForm.password2.$invalid && !registerForm.password2.$pristine }">
+                        <input type="password" name="password2" required class="form-control" ng-model="user.password2" password-match="password"  placeholder="Retype password"/>
+                         <p ng-show="registerForm.password2.$error.passwordNoMatch" class="help-block">Password not matched.</p>
+                    </div>
+                </div>
+                <div class="footer">                    
+
+                    <button type="submit" ng-click="processSignup(user)" ng-disabled="registerForm.$invalid" class="btn bg-olive btn-block">Sign me up</button>
+
+                    <a ng-click="alreadyMember()" class="text-center">I already have a membership</a>
+                </div>
+            </form>
+<!--
+            <div class="margin text-center">
+                <span>Register using social networks</span>
+                <br/>
+                <button class="btn bg-light-blue btn-circle"><i class="fa fa-facebook"></i></button>
+                <button class="btn bg-aqua btn-circle"><i class="fa fa-twitter"></i></button>
+                <button class="btn bg-red btn-circle"><i class="fa fa-google-plus"></i></button>
+
+            </div>-->
+        </div>

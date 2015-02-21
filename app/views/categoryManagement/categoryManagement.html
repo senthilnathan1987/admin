@@ -1,0 +1,70 @@
+<div class="col-md-6">
+        <!-- general form elements disabled -->
+                            <div class="box box-warning">
+                                <div class="box-header">
+                                    <h3 class="box-title">Category Management</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <form role="form">
+
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <label>Select category</label>
+                                            <select class="form-control" ng-model="catg.category" ng-change="categorySelect()">
+                                                <option value="addNewCategory">Add new category</option>
+                                                <option ng-repeat="item in category | unique:'category'">{{item.category }}</option>
+                                               
+                                              
+                                            </select>
+                                        </div>
+                                        <div class="form-group" id="addCategory" style="display:none;">
+                                            <label>Add Category</label>
+                                            <input type="text" class="form-control" placeholder="" ng-model="catg.addCategory"/>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>Sub-Category</label>
+                                            <input type="text" class="form-control" placeholder="" ng-model="catg.subCategory"/>
+                                            <input type="text" ng-model="catg.userId" ng-init="{{catg.userId=uid}}" name="userId" />
+                                        </div>
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary" ng-click="addCategory(catg)">Add category</button>
+                                        </div>
+
+                                    </form>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+    
+         
+                        </div><!--/.col (right) -->
+<div class="col-md-6">
+               <div class="box box-warning">
+        
+                                <div class="box-header">
+                                    <h3 class="box-title">Categories</h3>
+                                   <!-- <div class="box-tools">
+                                        <ul class="pagination pagination-sm no-margin pull-right">
+                                            <li><a href="#">&laquo;</a></li>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">&raquo;</a></li>
+                                        </ul>
+                                    </div>-->
+                                </div><!-- /.box-header -->
+                                <div class="box-body no-padding">
+                                    <table class="table">
+                                        <tr >
+                                            <th>Parent category</th>
+                                            <th>Sub-category</th>
+                                            
+                                        </tr>
+                                        <tr ng-repeat="item in category ">
+                                            <td>{{item.category}}</td>
+                                            <td><span class="badge bg-red">{{item.sub_category}}</span></td>
+                                        </tr>
+                                       
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+</div>

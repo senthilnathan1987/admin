@@ -1,0 +1,206 @@
+        <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        {{parseInt(networth) + parseInt(incomeTotal) }}
+                                    </h3>
+                                   
+                                    <p>
+                                        New worth
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                               <a href="#" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                               
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>
+                                        {{(parseInt(networth) + parseInt(incomeTotal)) - parseInt(expenseTotal)}}
+                                    </h3>
+                                    <p>
+                                       BUDGET BALANCE
+                                       
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                               <a href="#" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>
+                                       {{incomeTotal}}
+                                    </h3>
+                                    <p>
+                                        INCOME THIS MONTH
+
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                   Click to add income <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>
+                                       {{expenseTotal}}
+                                    </h3>
+                                    <p>
+                                       EXPENSE THIS MONTH
+
+                                    </p>
+                                </div>
+                               <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    Click to add expense <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                    </div><!-- /.row -->
+
+
+      <div class="row" ng-controller="FlotChartDemoCtrl">
+           <section class="col-lg-6 connectedSortable" > 
+             <!-- Custom tabs (Charts with tabs)-->
+                            <div  ng-controller="TabsDemoCtrl">
+                                <tabset class="nav-tabs-custom">
+                                     <tab heading="Expense">
+                                        
+                                            <nvd3-pie-chart
+                                                data="expenseChart"
+                                                id="expenseChart"
+                                                width="550"
+                                                height="350"
+                                                x="xFunction()"
+                                                y="yFunction()"
+                                                donut="true"
+                                                showLegend="true"
+                                                donutLabelsOutside="true">
+                                                <svg height="250"></svg>
+                                            </nvd3-pie-chart>
+                                        
+                                    
+                                      </tab>
+                                     <tab heading="Income">
+                                     <nvd3-pie-chart
+                                                data="incomeChart"
+                                                id="incomeChart"
+                                                width="550"
+                                                height="350"
+                                                x="xFunction()"
+                                                y="yFunction()"
+                                                donut="true"
+                                                showLegend="true"
+                                                donutLabelsOutside="true">
+                                                <svg height="250"></svg>
+                                            </nvd3-pie-chart>
+                                    
+                                     </tab>
+                                    <tab heading="Net Worth">Net Worth</tab>
+                                </tabset>
+                            </div><!-- /.nav-tabs-custom -->
+          </section>
+          
+                <div class="col-md-6" >
+        <div class="panel panel-default">
+          <div class="panel-heading font-bold">UPCOMING REMINDERS</div>
+          <div class="panel-body">
+      
+                                <div class="box-body no-padding">
+                                    <nvd3-line-chart
+                                        data="expenceIncome"
+                                        id="expenceIncome"
+                                        xAxisTickFormat="xAxisTickFormatFunction()"
+                                        yAxisTickFormat="yAxisTickFormatFunction()"
+                                        width="550"
+                                        height="350"
+                                        showXAxis="true"
+                                        showYAxis="true">
+                                            <svg></svg>
+                                    </nvd3-line-chart>
+                                </div><!-- /.box-body -->
+                            
+          
+        </div>
+      </div>
+    </div>
+      </div><!-- /.row -->
+
+ <div >
+
+     
+   <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">TRANSACTIONS</h3>
+                                   <div class="pull-right box-tools" ng-controller="addTransactionModel"> 
+                                        <button  ng-click="open()"class="btn btn-primary btn-sm pull-right" data-widget="collapse" data-toggle="tooltip" title="Collapse" style="margin-top: 10px;">Add transaction</button>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Date</th>
+                                            <th>Account</th>
+                                            <th>Amount</th>
+                                           
+                                            <th>Category</th>
+                                            <th>Sub-Category</th>
+                                            
+                                            <th>Type</th>
+                                              <th>Description</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                        <tr ng-repeat="data in transcationInfo  | orderBy:sort:reverse">
+                                            <td>{{data.id}}</td>
+                                            <td width="10%">{{data.transcation_date | date:'dd-MM-yyyy'}}</td>
+                                            <td>{{data.transcation_account}}</td>
+                                            <td>{{data.transcation_amount}}</td>
+                                            
+                                            <td>{{data.category}}</td>
+                                             <td>{{data.sub_category}}</td>
+                                            <td><span class="label {{data.transcation_tag === 'income' ? 'label-success' :  'label-danger'}}">{{data.transcation_tag}}</span></td>
+                                            <td width="20%">{{data.transcation_description}}</td>
+                                             <td align="center"> 
+                                            <!-- tools box -->
+                                            <div class="box-tools">
+                                                    <button class="btn btn-danger btn-sm removeAccount" ng-click="removeAccount(data.id);" data-widget='remove' data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                                                 <button class="btn btn-danger btn-sm removeAccount" ng-click="editAccount(data.id);" data-widget='edit' data-toggle="tooltip" title="Remove"><i class="fa fa-pencil"></i></button>
+                                                </div>
+                                            <!-- /. tools -->
+                                        </td>
+                                        </tr>
+                                         
+                               
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    </div>

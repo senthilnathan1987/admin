@@ -1,0 +1,156 @@
+  <!-- Main content -->
+                <section class="content" >
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-header">
+                               {{pageTitle}}
+                            </h2>                            
+                        </div><!-- /.col -->
+                    </div>
+                <div >
+                    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Loans</button>
+                    <div collapse="isCollapsed" id="addCreditCard">
+                        <div class="well well-lg" style="margin-top:10px;">
+                         <div class="row">
+                              <form role="form" name="addLoanForm"  novalidate>
+                              <div class="col-md-4">
+                                 
+                                        <!-- text input -->
+                                        <div class="form-group" ng-class="{ 'has-error' : addLoanForm.bankName.$invalid && !addLoanForm.bankName.$pristine }">
+                                            <label>Bank name</label>
+                                            <input type="text" required name="bankName" ng-model="loan.bankName" class="form-control"  placeholder="Enter Bank Name"/>
+                                        </div>
+                                         <div class="form-group" ng-class="{ 'has-error' : addLoanForm.loanaccountnumber.$invalid && !addLoanForm.loanaccountnumber.$pristine }">
+                                            <label>Account number</label>
+                                            <input type="text" required name="loanaccountnumber" ng-model="loan.loanaccountnumber" class="form-control" placeholder="Enter Account Number"/>
+                                        </div>
+                                        
+                                        <!-- select -->
+                                        <div class="form-group" ng-class="{ 'has-error' : addLoanForm.loantype.$invalid && !addLoanForm.loantype.$pristine }">
+                                            <label>Loan type</label>
+                                            <select class="form-control" required name="loantype" ng-model="loan.loantype">
+                                                <option value=""> -- Select Type --</option>
+                                               <option value="personal">Personal</option>
+                                               <option value="automotive">Automotive</option>
+                                               <option value="home">Home</option>
+                                               <option value="lineofcredit">Line of Credit</option>
+                                               <option value="student">Student</option>
+                                                 <option value="business">Business</option>
+                                             
+                                            </select>
+                                        </div>
+                                      
+                                   
+                                         
+                             </div>
+                              <div class="col-md-4">
+                                  <div class="form-group" ng-class="{ 'has-error' : addLoanForm.openingbalance.$invalid && !addLoanForm.openingbalance.$pristine }">
+                                            <label>Opening Balance</label>
+                                            <input type="number" required ng-model="loan.openingbalance" name="openingbalance" class="form-control" placeholder="Opening Balance"/>
+                                        </div>
+                                         <div class="form-group" ng-class="{ 'has-error' : addLoanForm.loanintrest.$invalid && !addLoanForm.loanintrest.$pristine }">
+                                            <label>Interest</label>
+                                            <input type="number" required ng-model="loan.loanintrest" name="loanintrest" class="form-control" placeholder="Interest"/>
+                                        </div>
+                                         <div class="form-group" ng-class="{ 'has-error' : addLoanForm.loansatrtdate.$invalid && !addLoanForm.loansatrtdate.$pristine }" style="position:relative;">
+                                            <label>Loan start date</label>
+                                            <input type="text" required ng-model="loan.loansatrtdate" name="loansatrtdate" class="form-control" placeholder="Loan start date" datepicker-popup="MM/dd/yyyy"  is-open="opened"  datepicker-options="dateOptions"/>
+                                             <span class="input-group-btn" style="position:absolute;top:25px;right:35px;">
+                                            <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                          </span>
+                                        </div>
+                                   
+                                  
+                             </div>
+                              <div class="col-md-4">
+                                  <div class="form-group" ng-class="{ 'has-error' : addLoanForm.loanstenure.$invalid && !addLoanForm.loanstenure.$pristine }">
+                                            <label>Loan Tenure( in year)</label>
+                                            <input type="number" required ng-model="loan.loanstenure" name="loanstenure" class="form-control" placeholder="Loan Tenure ( in years)"/>
+                                        </div>
+                                  
+                                        <div class="form-group" ng-class="{ 'has-error' : addLoanForm.loanduedate.$invalid && !addLoanForm.loanduedate.$pristine }">
+                                            <label>Payment Due Day:</label>
+                                            <select class="form-control" required name="loanduedate" ng-model="loan.loanduedate">
+                                                 <option value=""> -- Select due date --</option>
+                                                <option value="1"> 1</option>
+                                               <option value="2">2</option>
+                                               <option value="3">3</option>
+                                               <option value="4">4</option>
+                                               <option value="5">5</option>
+                                               <option value="6">6</option>
+                                             
+                                            </select>
+                                        </div>
+                                        
+                                        
+                                        <div class="box-footer">
+                                        <button type="submit" ng-disabled="addLoanForm.$invalid" id="saveLoan" ng-click="saveLoan(loan);"class="btn btn-primary">Save Loan</button>
+                                        </div>
+                             <input type="text" ng-show="hidden" ng-model="loan.userId" ng-init="{{loan.userId=uid}}" name="userId" />
+
+                                   
+                             </div>
+                              </form>
+                         </div>
+                         
+                        </div> 
+                    </div>
+                </div>
+                    
+                    
+             
+
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                       
+                                        <th>Bank name</th>
+                                        <th>Account number</th>
+                                        <th>Loan type</th>
+                                        <th>Opening Balance</th>
+                                        <th>Interest</th>
+                                        <th>Loan start date</th>
+                                         <th>Loan Tenure( in year)</th>
+                                         <th>Payment Due Day</th>
+                                        <th>Action</th>
+                                    </tr>                                    
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="data in loansInfo  | orderBy:sort:reverse">
+                                      
+                                        <td>{{data.bank_name}}</td>
+                                        <td>{{data.loan_number}}</td>
+                                        <td>{{data.loan_type}}</td>
+                                         <td>{{data.opening_balance}}</td>
+                                         <td>{{data.interest}}</td>
+                                        <td>{{data.loan_start_date}}</td>
+                                         <td>{{data.loan_tenure}}</td>
+                                         <td>{{data.payment_due_day}}</td>
+                                        
+                                        <td align="center"> 
+                                            <!-- tools box -->
+                                            <div class="box-tools">
+                                                  <a href="#/myLoanDetails/{{data.id}}">detail</a>
+                                                    <button class="btn btn-danger btn-sm removeAccount" ng-click="removeCard(data.id);" data-widget='remove' data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                                                </div>
+                                            <!-- /. tools -->
+                                        </td>
+                                    </tr>
+                                   <!-- <tr>
+                                       <td colspan="6" align="right"><strong>Total:</strong></td>
+                                        <td>23,8555</td>
+                                       
+                                    </tr>-->
+                              
+                                </tbody>
+                            </table>                            
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+
+
+
+                </section><!-- /.content -->

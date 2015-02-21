@@ -1,0 +1,66 @@
+        <div class="col-md-6">
+                            <!-- general form elements disabled -->
+                            <div class="box box-warning">
+                                <div class="box-header">
+                                    <h3 class="box-title">Add Credit cards</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <form role="form">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Account name</label>
+                                            <input type="text" name="cardaccountname" ng-model="card.accountname" class="form-control"  placeholder="Enter Account Name"/>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Account number</label>
+                                            <input type="text" name="cardaccountnumber" ng-model="card.accountnumber" class="form-control" placeholder="Enter Account Number"/>
+                                        </div>
+                                        
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <label>Account type</label>
+                                            <select class="form-control" name="cardaccounttype" ng-model="card.accounttype">
+                                                <option value=""> -- Select Type --</option>
+                                               <option value="visa">Visa</option>
+                                               <option value="mastercard">Mastercard</option>
+                                               <option value="american_express">American Express</option>
+                                               <option value="discover">Discover</option>
+                                               <option value="other">Other</option>
+                                             
+                                            </select>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Outstanding Balance</label>
+                                            <input type="text" ng-model="card.accountoutstandingbalance" name="cardaccountbalance" class="form-control" placeholder="Outstanding Balance"/>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Interest</label>
+                                            <input type="text" ng-model="card.accountintrest" name="cardaccountintrest" class="form-control" placeholder="Interest"/>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Credit limit</label>
+                                            <input type="text" ng-model="card.creditlimit" name="cardcreditlimit" class="form-control" placeholder="Credit limit"/>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Payment Due Day:</label>
+                                            <select class="form-control" name="cardduedate" ng-model="card.duedate">
+                                                <option value="1"> 1</option>
+                                               <option value="2">2</option>
+                                               <option value="3">3</option>
+                                               <option value="4">4</option>
+                                               <option value="5">5</option>
+                                               <option value="6">6</option>
+                                             
+                                            </select>
+                                        </div>
+                                        
+                                        
+                                        <div class="box-footer">
+                                        <button type="submit" id="saveCreditCard" ng-click="saveCreditCard(card);"class="btn btn-primary">Save Credit Card</button>
+                                        </div>
+                             
+
+                                    </form>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div><!--/.col (right) -->

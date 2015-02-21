@@ -1,0 +1,50 @@
+        <div class="col-md-6">
+                            <!-- general form elements disabled -->
+                            <div class="box box-warning">
+                                <div class="box-header">
+                                    <h3 class="box-title">Add Accounts</h3>
+                                </div><!-- /.box-header -->
+                                <div class="box-body">
+                                    <form role="form">
+                                        <!-- text input -->
+                                        <div class="form-group">
+                                            <label>Account name</label>
+                                            <input type="text" name="accountname" ng-model="account.accountname" class="form-control"  placeholder="Enter Account Name"/>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Account number</label>
+                                            <input type="text" name="accountnumber" ng-model="account.accountnumber" class="form-control" placeholder="Enter Account Number"/>
+                                        </div>
+                                        
+                                        <!-- select -->
+                                        <div class="form-group">
+                                            <label>Account type</label>
+                                            <select class="form-control" name="accounttype" ng-model="account.accounttype">
+                                                <option value=""> -- Select Type --</option>
+                                               <option value="checking">Checking</option>
+                                               <option value="savings">Savings</option>
+                                               <option value="paypal">PayPal</option>
+                                               <option value="other2">Other/Cash</option>
+                                               <option value="credit">Credit Card</option>
+                                               <option value="loan">Loan</option>
+                                               <option value="401k">401k</option>
+                                               <option value="ira">IRA</option>
+                                               <option value="pension">Pension</option>
+                                               <option value="other">Other Investment</option>
+                                               <option value="mutual">Mutual Funds</option>
+                                            </select>
+                                        </div>
+                                         <div class="form-group">
+                                            <label>Opening Balance:</label>
+                                            <input type="text" ng-model="account.accountbalance" name="accountbalance" class="form-control" placeholder="Opening Balance"/>
+                                        </div>
+                                        
+                                        <div class="box-footer">
+                                        <button type="submit" id="saveAccount" ng-click="saveAccount(account);"class="btn btn-primary">Save Account</button>
+                                        </div>
+                             
+
+                                    </form>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div><!--/.col (right) -->

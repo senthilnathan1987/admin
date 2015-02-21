@@ -1,0 +1,63 @@
+  <!-- Main content -->
+                <section class="content" ng-controller="addAccountListingSection" >                    
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="pull-right box-tools">                                        
+                                       <button class="btn btn-default" id="addAccountBtn" ng-click="open('lg')"><i class="fa fa-plus"></i> Add Account</button>
+                                    </div>
+                            <h2 class="page-header">
+                               {{pageTitle}}
+                            </h2>                            
+                        </div><!-- /.col -->
+                    </div>
+             
+
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="col-xs-12 table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Account name</th>
+                                        <th>Account type</th>
+                                        <th>Account number</th>
+                                        <th>Balance</th>
+                                        <th>Action</th>
+                                    </tr>                                    
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="data in accountInfo">
+                                        <td>{{data.id}}</td>
+                                        <td>{{data.account_name}}</td>
+                                        <td>{{data.account_type}}</td>
+                                        <td>{{data.account_number}}</td>
+                                        <td>{{data.account_balance}}</td>
+                                        <td align="center"> 
+                                            <!-- tools box -->
+                                            <div class="box-tools">
+                                                    <button class="btn btn-danger btn-sm removeAccount" ng-click="removeAccount(data.id);" data-widget='remove' data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                                                 <button class="btn btn-danger btn-sm removeAccount" ng-click="editAccount(data.id);" data-widget='edit' data-toggle="tooltip" title="Remove"><i class="fa fa-pencil"></i></button>
+                                                </div>
+                                            <!-- /. tools -->
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                       <td colspan="4" align="right"><strong>Total:</strong></td>
+                                        <td>{{getTotal()}}</td>
+                                        <td>&nbsp;</td>
+                                    </tr>
+                              
+                                </tbody>
+                            </table>                            
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+
+
+                    <!-- this row will not appear when printing -->
+            
+                </section><!-- /.content -->
+
+
+
